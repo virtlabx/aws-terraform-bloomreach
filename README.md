@@ -1,2 +1,2 @@
-# aws-terraform-bloomreach
-Terraform code to create K8S cluster 
+# terraform-bloomreach
+Terraform code to create AWS EKS cluster.
