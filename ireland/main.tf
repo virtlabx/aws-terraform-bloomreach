@@ -8,7 +8,7 @@ provider "aws" {
   token                  = data.aws_eks_cluster_auth.eks-cluster-auth.token
 }*/
 
-data "aws_iam_account_alias" "current" {}
+#data "aws_iam_account_alias" "current" {}
 
 data "aws_availability_zones" "available" {
   state = "available"
