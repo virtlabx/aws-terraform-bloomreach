@@ -1,9 +1,10 @@
 module "tagging" {
-  source = "../modules/tagging/"
+  source = "../../modules/tagging"
 }
 
 locals {
   cluster_name = "bloomreach-cluster"
+  alarm_sns_topic = module.sns_topic_centaurus_low_priority_alerts.sns_topic_arn
   dev-tags = {
     "Environment" = module.tagging.dev-tags.dev
     "Company"     = module.tagging.dev-tags.company
