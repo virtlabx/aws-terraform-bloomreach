@@ -1,8 +1,3 @@
-resource "aws_iam_service_linked_role" "autoscaling-role" {
-  aws_service_name = "autoscaling.amazonaws.com"
-  tags             = merge({ Name = "eks-autoscaling-role" }, local.dev-tags)
-}
-
 resource "aws_kms_key" "kms_key" {
   description             = "A KMS key to encrypt EKS cluster config."
   deletion_window_in_days = "30"
@@ -34,7 +29,7 @@ data "aws_iam_policy_document" "kms_policy" {
     principals {
       type        = "AWS"
       identifiers = [
-        "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling_myenv",
+        "arn:aws:iam::aws:policy/aws-service-role/AutoScalingServiceRolePolicy",
         module.eks-cluster.cluster_iam_role_arn,
       ]
     }
@@ -46,7 +41,7 @@ data "aws_iam_policy_document" "kms_policy" {
     principals {
       type        = "AWS"
       identifiers = [
-        "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling_myenv", # required for the ASG to manage encrypted volumes for nodes
+        "arn:aws:iam::aws:policy/aws-service-role/AutoScalingServiceRolePolicy",
         module.eks-cluster.cluster_iam_role_arn,                                                                                                            # required for the cluster / persistentvolume-controller to create encrypted PVCs
       ]
     }
