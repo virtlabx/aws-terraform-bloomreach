@@ -72,4 +72,5 @@ Terraform workflow triggers the push or pull request events but only for the mai
 To check that, have a look on .github/workflows/terraform.yml file.
 
 And here is the theory behind that: 
+
 [https://learn.hashicorp.com/tutorials/terraform/github-actions](https://learn.hashicorp.com/tutorials/terraform/github-actions)
