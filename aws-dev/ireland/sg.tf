@@ -7,7 +7,7 @@ resource "aws_security_group" "bloomreach-jenkins-dev-sg" {
     description     = "Allow the default jenkins port."
     from_port       = 8080
     to_port         = 8080
-    protocol        = "HTTP"
+    protocol        = "tcp"
     cidr_blocks     = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
   }
   ingress {
