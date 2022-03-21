@@ -42,7 +42,6 @@ write_files:
         systemctl start jenkins
         systemctl enable jenkins
         yum -y install git
-        EOF
 %{ endif }
 
 %{ if cloudwatch_install == true }
