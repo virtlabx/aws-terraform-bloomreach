@@ -47,7 +47,7 @@ This is useful in calculating billing for a specific services/domains in AWS.
 - EKS cluster with an encrypted config(Security best practise).
 - Imported AWS ssh public Key pair.
 - Route53 domain for EC2 instance.
-- Security group for jenkins EC2 instance.
+- Security group for jenkins EC2 instance with the required ports only opened.
 - EC2 instance that runs jenkins and uses an EIP.
 - IAM account password policy that is better for security.
 - IAM role for cloudwatch agent that is installed in the ec2 instance and IAM instance profile.
