@@ -5,7 +5,7 @@ resource "aws_iam_user" "k8s-user" {
 }
 
 module "iam_groups" {
-  source = "modules/iam"
+  source = "./modules/iam"
   admins = [
     aws_iam_user.k8s-user.name,
   ]

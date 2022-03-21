@@ -1,5 +1,5 @@
 module "tagging" {
-  source = "modules/tagging"
+  source = "./modules/tagging"
 }
 
 locals {

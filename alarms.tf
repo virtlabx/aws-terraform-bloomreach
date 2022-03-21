@@ -1,5 +1,5 @@
 module "sns_topic" {
-  source         = "modules/sns"
+  source         = "./modules/sns"
   sns_topic_name = "bloomreach-dev-interviews-terraform-ayaelawdan-sns"
   tags           = merge({ Name = "bloomreach-dev-interviews-terraform-ayaelawdan-sns" }, local.dev-tags)
 }
