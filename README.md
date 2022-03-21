@@ -7,11 +7,6 @@ Terraform code to provision all AWS resources.
 - SNS
 - Tagging
 
-## aws-dev/ireland
-aws-dev is a development environment.
-
-I used Ireland region to provision all the resources.
-
 ### EC2 Module
 Generic EC2 module to provision EC2 instances, its volume and its route53 record.
 
@@ -32,9 +27,11 @@ To define a generic tags that could be used for all terraform resources.
 
 This is useful in calculating billing for a specific services/domains in AWS.
 
-### aws-dev/ireland
+### Terraform resources
 
-- Used sns module to create the sns topic. 
+I used Ireland region to provision all the resources.
+
+- SNS module to create the sns topic.
 - cloudwatch log group with 18 months retention period. 
 - cloudwatch log metric filter for console sign-in without MFA.
 - cloudwatch metric alarm to report single-factor console logins.
@@ -52,8 +49,10 @@ This is useful in calculating billing for a specific services/domains in AWS.
 - IAM account password policy that is better for security.
 - IAM role for cloudwatch agent that is installed in the ec2 instance and IAM instance profile.
 
-### To run terraform:
+### Run terraform:
+There are 2 ways to do that.
 
+1- Manually.
 
 ```
     git clone https://github.com/virtlabx/terraform-bloomreach.git
@@ -65,3 +64,12 @@ This is useful in calculating billing for a specific services/domains in AWS.
     terraform apply
     teraform destroy (For resources removal)
 ```
+
+2- Automatically using GitHub action that detects the changes and applies it.
+
+Terraform workflow triggers the push or pull request events but only for the main branch.
+
+To check that, have a look on .github/workflows/terraform.yml file.
+
+And here is the theory behind that: 
+[https://learn.hashicorp.com/tutorials/terraform/github-actions](https://learn.hashicorp.com/tutorials/terraform/github-actions)

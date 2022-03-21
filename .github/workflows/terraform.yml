@@ -3,18 +3,17 @@ name: "Terraform"
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ${{ secrets.tf_actions_working_dir }}
     steps:
       - name: Checkout
       - uses: actions/checkout@v2
