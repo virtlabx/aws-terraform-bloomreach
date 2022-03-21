@@ -1,11 +1,11 @@
-module "sns_topic_centaurus_low_priority_alerts" {
-  source = "../../modules/sns/"
-  sns_topic_name = "centaurus-alerts-low"
-  tags = module.tagging.dev-tags
+module "sns_topic" {
+  source         = "../../modules/sns/"
+  sns_topic_name = "bloomreach-dev-interviews-terraform-ayaelawdan-sns"
+  tags           = merge({ Name = "bloomreach-dev-interviews-terraform-ayaelawdan-sns" }, local.dev-tags)
 }
 
 resource "aws_cloudwatch_log_group" "cloudtrail_events" {
-  name              = "cloudtrail-events"
+  name              = "bloomreach-dev-interviews-terraform-ayaelawdan-cloudtrail-events"
   retention_in_days = "545"
 }
 
