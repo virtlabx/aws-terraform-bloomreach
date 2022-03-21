@@ -4,17 +4,24 @@ resource "aws_security_group" "bloomreach-jenkins-dev-sg" {
   vpc_id      = module.eks-vpc.vpc_id
   tags        = merge({Name = "bloomreach-jenkins-dev-sg" }, module.tagging.dev-tags)
   ingress {
-    description     = "Allow all traffic"
-    from_port       = 0
-    to_port         = 0
-    protocol        = "-1"
-    cidr_blocks     = ["0.0.0.0/0"] # TODO harden this sg inbound rule
+    description     = "Allow the default jenkins port."
+    from_port       = 8080
+    to_port         = 8080
+    protocol        = "tcp"
+    cidr_blocks     = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
+  }
+  ingress {
+    description     = "Allow ssh access from my IP address."
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    cidr_blocks     = ["77.250.27.40/32"]
   }
   egress {
-    description     = "Allow all traffic"
-    from_port       = 0
-    to_port         = 0
-    protocol        = "-1"
-    cidr_blocks     = ["0.0.0.0/0"] # TODO harden this sg outbound rule
+    description     = "Allow SMTP to send email in case of a build failures."
+    from_port       = 25
+    to_port         = 25
+    protocol        = "tcp"
+    cidr_blocks     = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
   }
 }
