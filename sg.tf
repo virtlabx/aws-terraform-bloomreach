@@ -24,4 +24,11 @@ resource "aws_security_group" "bloomreach-jenkins-dev-sg" {
     protocol        = "tcp"
     cidr_blocks     = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
   }
+  egress {
+    description     = "Allow HTTPS to install plugins."
+    from_port       = 443
+    to_port         = 443
+    protocol        = "tcp"
+    cidr_blocks     = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
+  }
 }
