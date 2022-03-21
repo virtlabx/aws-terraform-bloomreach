@@ -3,6 +3,7 @@ Terraform code to provision all AWS resources.
 
 ## Modules
 - EC2
+- ECR Repository 
 - IAM
 - SNS
 - Tagging
@@ -13,6 +14,9 @@ Generic EC2 module to provision EC2 instances, its volume and its route53 record
 It uses cloud-init to optionally install some packages during the ec2 instance provisioning.
 
 Packages are Docker, Jenkins, git and cloudwatch agent.
+
+### ECR Repository
+To create ECR repos with a lifecycle to remove the untagged docker images that are older than 14 days.
 
 ### IAM Module
 To provision Admins group with AdministratorAccess policy and other default policies that also could be attached to any other group by default.
@@ -48,6 +52,7 @@ I used Ireland region to provision all the resources.
 - EC2 instance that runs jenkins and uses an EIP.
 - IAM account password policy that is better for security.
 - IAM role for cloudwatch agent that is installed in the ec2 instance and IAM instance profile.
+- ECR repository for pushing the docker images after it's built on jenkins.
 
 ### Run terraform:
 There are 2 ways to do that.
