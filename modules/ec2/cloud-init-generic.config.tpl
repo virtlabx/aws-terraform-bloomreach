@@ -35,7 +35,7 @@ write_files:
    permissions: '0755'
    content: |
         #!/bin/bash -ex
-        yum -y install java-11-openjdk-devel
+        yum -y install java-11
         wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
         rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
         yum -y install jenkins
