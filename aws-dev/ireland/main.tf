@@ -2,25 +2,25 @@ provider "aws" {
   region = var.region
 }
 
-/*provider "kubernetes" {
+provider "kubernetes" {
   host                   = data.aws_eks_cluster.eks-cluster.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.eks-cluster.certificate_authority.0.data)
   token                  = data.aws_eks_cluster_auth.eks-cluster-auth.token
-}*/
+}
 
-#data "aws_iam_account_alias" "current" {}
+data "aws_caller_identity" "current" {}
 
 data "aws_availability_zones" "available" {
   state = "available"
 }
 
-/*data "aws_eks_cluster" "eks-cluster" {
+data "aws_eks_cluster" "eks-cluster" {
   name = module.eks-cluster.cluster_id
 }
 
 data "aws_eks_cluster_auth" "eks-cluster-auth" {
   name = module.eks-cluster.cluster_id
-}*/
+}
 
 terraform {
   backend "s3" {
