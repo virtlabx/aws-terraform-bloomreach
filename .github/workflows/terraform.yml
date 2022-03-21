@@ -25,11 +25,9 @@ jobs:
         
       - name: Terraform Init
         id: init
-        run: terraform init
-        
-      - name: Terraform Validate
-        id: validate
-        run: terraform validate -no-color
+        uses: hashicorp/terraform-github-actions/init@v0.4.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Terraform Plan
         id: plan
