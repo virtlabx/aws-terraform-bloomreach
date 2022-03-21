@@ -54,6 +54,7 @@ This is useful in calculating billing for a specific services/domains in AWS.
 
 ### To run terraform:
 
+
 ```
     git clone https://github.com/virtlabx/terraform-bloomreach.git
     cd terraform-bloomreach/aws-dev/ireland
