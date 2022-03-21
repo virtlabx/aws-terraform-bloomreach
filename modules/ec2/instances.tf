@@ -38,6 +38,6 @@ resource "aws_route53_record" "record" {
 resource "aws_eip" "eip" {
   count    = var.associate_eip ? 1 : 0
   vpc      = true
-  instance = aws_instance.server.*.id
+  instance = aws_instance.server.*[count.index].id
   tags     = var.tags
 }

@@ -48,7 +48,7 @@ This is useful in calculating billing for a specific services/domains in AWS.
 - Imported AWS ssh public Key pair.
 - Route53 domain for EC2 instance.
 - Security group for jenkins EC2 instance.
-- EC2 instance that runs jenkins and uses EIP.
+- EC2 instance that runs jenkins and uses an EIP.
 - IAM account password policy that is better for security.
 - IAM role for cloudwatch agent that is installed in the ec2 instance and IAM instance profile.
 
