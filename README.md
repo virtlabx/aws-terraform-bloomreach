@@ -37,6 +37,9 @@ This is useful in calculating billing for a specific services/domains in AWS.
 - Encrypted S3 bucket for the backend and it has a lifecycle rule.
 - Using IAM module to create 1 service user "k8s-user". (AK and SK are attached in the email).
 - VPC that has 3 private subnets and 3 public subnets in each AZ.
+- IAM service linked role for autoscaling.
+- KMS key to encrypt EKS cluster config.
+- EKS cluster with an encrypted config.
 
 To run terraform:
 
