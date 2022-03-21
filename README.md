@@ -39,7 +39,7 @@ This is useful in calculating billing for a specific services/domains in AWS.
 - VPC that has 3 private subnets and 3 public subnets in each AZ.
 - IAM service linked role for autoscaling.
 - KMS key to encrypt EKS cluster config.
-- EKS cluster.
+- EKS cluster with an encrypted config.
 
 To run terraform:
 

@@ -5,7 +5,7 @@ module "eks-cluster"{
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
   vpc_id                          = module.eks-vpc.vpc_id
-  subnet_ids                      = concat(module.eks-vpc.private_subnets, module.eks-vpc.public_subnets)
+  subnet_ids                      = module.eks-vpc.private_subnets
   tags                            = merge({ Name = "${local.cluster_name}" }, local.dev-tags)
   cluster_addons = {
     coredns = {

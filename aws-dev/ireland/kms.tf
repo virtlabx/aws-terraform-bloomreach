@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "kms_policy" {
     principals {
       type        = "AWS"
       identifiers = [
-        "arn:aws:iam::aws:policy/aws-service-role/AutoScalingServiceRolePolicy",
+        "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling",
         module.eks-cluster.cluster_iam_role_arn,
       ]
     }
@@ -41,8 +41,8 @@ data "aws_iam_policy_document" "kms_policy" {
     principals {
       type        = "AWS"
       identifiers = [
-        "arn:aws:iam::aws:policy/aws-service-role/AutoScalingServiceRolePolicy",
-        module.eks-cluster.cluster_iam_role_arn,                                                                                                            # required for the cluster / persistentvolume-controller to create encrypted PVCs
+        "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling",
+        module.eks-cluster.cluster_iam_role_arn,
       ]
     }
     condition {
