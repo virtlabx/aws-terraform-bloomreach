@@ -1,3 +1,4 @@
+#cloud-config
 users:
   - name: "${ssh_user}"
     primary_group: "${ssh_user}"

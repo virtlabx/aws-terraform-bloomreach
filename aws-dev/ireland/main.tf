@@ -1,6 +1,5 @@
 provider "aws" {
   region  = var.region
-  version = "~> 4.0"
 }
 
 provider "kubernetes" {
@@ -24,6 +23,9 @@ data "aws_eks_cluster_auth" "eks-cluster-auth" {
 }
 
 terraform {
+  required_providers {
+    aws  = "~> 3.74.1"
+  }
   backend "s3" {
     bucket         = "bloomreach-dev-interviews-terraform-ayaelawdan"
     key            = "ireland/terraform.tfstate"
