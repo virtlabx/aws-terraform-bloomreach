@@ -69,8 +69,8 @@ There are 2 ways to do that.
 
 Terraform workflow triggers the push or pull request events but only for the main branch.
 
-To check that, have a look on .github/workflows/terraform.yml file.
+To check that, have a look on .github/workflows/terraform.yml file and also on Actions tab.
 
-And here is the theory behind that: 
+Here is the theory behind that:
 
 [https://learn.hashicorp.com/tutorials/terraform/github-actions](https://learn.hashicorp.com/tutorials/terraform/github-actions)
