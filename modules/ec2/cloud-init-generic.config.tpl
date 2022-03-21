@@ -27,7 +27,7 @@ write_files:
         yum -y install docker
         service docker start
         systemctl enable docker
-        usermod -a -G docker ec2-user
+        usermod -a -G docker ${ssh_user}
 %{ endif }
 
 %{ if jenkins_install == true }
@@ -35,14 +35,13 @@ write_files:
    permissions: '0755'
    content: |
         #!/bin/bash -ex
-        yum -y install java-1.8.0
-
+        yum -y install java-11
         wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
         rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
         yum -y install jenkins
         systemctl start jenkins
         systemctl enable jenkins
-        EOF
+        yum -y install git
 %{ endif }
 
 %{ if cloudwatch_install == true }

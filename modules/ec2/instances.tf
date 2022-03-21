@@ -34,3 +34,10 @@ resource "aws_route53_record" "record" {
   ttl     = "300"
   records = [element(aws_instance.server.*.private_ip, count.index)]
 }
+
+resource "aws_eip" "eip" {
+  count    = var.associate_eip ? 1 : 0
+  vpc      = true
+  instance = aws_instance.server.*[count.index].id
+  tags     = var.tags
+}

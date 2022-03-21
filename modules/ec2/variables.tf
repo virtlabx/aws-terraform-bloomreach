@@ -67,6 +67,7 @@ variable "cloudwatch_install" {
   type        = bool
   default     = true
 }
+
 variable "instance_name_format" {
   description = "The name format to be used as hostname and tag"
   type        = string
@@ -82,6 +83,12 @@ variable "instance_count" {
 variable "iam_instance_profile" {
   description = "IAM instance profile"
   type        = string
+}
+
+variable "associate_eip" {
+  description = "Associate EIP to the ec2 instance"
+  type        = bool
+  default     = true
 }
 
 locals {
