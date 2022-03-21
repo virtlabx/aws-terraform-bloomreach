@@ -1,0 +1,4 @@
+resource "aws_key_pair" "bloomreach-jenkins-dev" {
+  key_name   = "bloomreach-jenkins-dev"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnkCLrJgYh9dq+a7aSA1INA2fFPXg1XvPvJhhSws4SBy057SRkle/TihJ9cHlbpuEgQJFFE6iyq/mkyFMvoRJSoMJJXxWPp1gMo6vdYe/7r6ZTVMYKnhpuY8H70gdBAM386s2McqQG9+WIIVOH3WkY+8yQd4S04DSU7P1riRb0zzDFNQlpg6Ajc5nU3ruKiwklHcJ27fn7lL3CLNpKtQ2VA6HRDgBH/XHR8XLblYYhFbmUtPEamtrqTmeLhg40UUS0+K2RMgFcQd7QwitRa1UVQ2nGvCBRzBc/+4b1N5Ygf0o/ppJajWHiRkf/gCktqwE5JIBMMhghqEydgM+aUnjX"
+}
