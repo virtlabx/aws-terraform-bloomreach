@@ -11,9 +11,3 @@ module "jenkins-dev-master" {
   ssh_authorized_keys         = aws_key_pair.bloomreach-jenkins-dev.public_key
   tags                        = merge({ Name = "jenkins-dev-master" }, local.dev-tags)
 }
-
-resource "aws_eip" "jenkins-master-eip" {
-  vpc      = true
-  instance = module.jenkins-dev-master.servers[0].id
-  tags     = merge({ Name = "jenkins-master-eip" }, local.dev-tags)
-}
