@@ -15,7 +15,7 @@ resource "aws_security_group" "bloomreach-jenkins-dev-sg" {
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
-    cidr_blocks     = ["77.250.27.40/32"]
+    cidr_blocks     = ["178.84.204.183/32"]
   }
   egress {
     description     = "Allow SMTP to send email in case of a build failures."
