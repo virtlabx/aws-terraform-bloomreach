@@ -26,15 +26,6 @@ resource "aws_instance" "server" {
   }
 }
 
-resource "aws_route53_record" "record" {
-  count   = var.instance_count
-  zone_id = var.record_zone_id
-  name    = var.instance_hostname == "" ? format(var.instance_name_format, count.index + 1) : var.instance_hostname
-  type    = "A"
-  ttl     = "300"
-  records = [element(aws_instance.server.*.private_ip, count.index)]
-}
-
 resource "aws_eip" "eip" {
   count    = var.associate_eip ? 1 : 0
   vpc      = true

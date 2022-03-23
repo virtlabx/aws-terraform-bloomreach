@@ -9,7 +9,7 @@ Terraform code to provision all AWS resources.
 - Tagging
 
 ### EC2 Module
-Generic EC2 module to provision EC2 instances, its volume and its route53 record.
+Generic EC2 module to provision EC2 instances and its volume.
 
 It uses cloud-init to optionally install some packages during the ec2 instance provisioning.
 
@@ -47,7 +47,6 @@ I used Ireland region to provision all the resources.
 - KMS key to encrypt EKS cluster config.
 - EKS cluster with an encrypted config(Security best practise).
 - Imported AWS ssh public Key pair.
-- Route53 domain for EC2 instance.
 - Security group for jenkins EC2 instance with the required ports only opened.
 - EC2 instance that runs jenkins and uses an EIP.
 - IAM account password policy that is better for security.

@@ -46,10 +46,6 @@ variable "instance_type" {
   default     = "t3a.micro"
 }
 
-variable "record_zone_id" {
-  description = "Route 53 zone to create host record in"
-}
-
 variable "docker_install" {
   description = "Docker install"
   type        = bool

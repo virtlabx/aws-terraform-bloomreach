@@ -6,7 +6,6 @@ module "jenkins-dev-master" {
   instance_type               = "t3a.medium"
   iam_instance_profile        = aws_iam_instance_profile.cloudwatch-agent-instance-profile.name
   instance_ami                = "ami-0069d66985b09d219"
-  record_zone_id              = aws_route53_zone.bloomreach.zone_id
   ssh_user                    = "jenkins"
   ssh_authorized_keys         = aws_key_pair.bloomreach-jenkins-dev.public_key
   tags                        = merge({ Name = "jenkins-dev-master" }, local.dev-tags)
