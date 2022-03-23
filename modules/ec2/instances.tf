@@ -32,7 +32,7 @@ resource "aws_route53_record" "record" {
   name    = var.instance_hostname == "" ? format(var.instance_name_format, count.index + 1) : var.instance_hostname
   type    = "A"
   ttl     = "300"
-  records = [element(aws_instance.server.*.private_ip, count.index)]
+  records = [element(aws_instance.server.*.public_ip, count.index)]
 }
 
 resource "aws_eip" "eip" {
