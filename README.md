@@ -55,6 +55,10 @@ I used Ireland region to provision all the resources.
 - Acm certificate for jenkins and vault server.
 - Load balancer that has jenkins instance behind it.
 
+I also added resources in route53 service but that was manually.
+
+The reason why I added these manually as terraform is unable to manage the domain registration.
+
 ### Run terraform:
 There are 2 ways to do that.
 

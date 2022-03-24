@@ -39,18 +39,19 @@ resource "aws_lb_target_group" "lb-jenkins-vault-tg" {
   vpc_id   = module.eks-vpc.vpc_id
   tags     = merge({ Name = "lb-jenkins-vault-tg" }, local.dev-tags)
   health_check {
-    path = "/login"
-    port = "8080"
-    healthy_threshold = 2
+    protocol            = "HTTP"
+    path                = "/login"
+    port                = "8080"
+    healthy_threshold   = 5
     unhealthy_threshold = 2
-    timeout = 5
-    interval = 60
-    matcher = "200"
+    timeout             = 5
+    interval            = 30
+    matcher             = "200"
   }
 }
 
 resource "aws_lb_target_group_attachment" "lb-jenkins-vault-tg-attachment" {
   target_group_arn = aws_lb_target_group.lb-jenkins-vault-tg.arn
-  target_id        = module.jenkins-dev-master[0].id
+  target_id        = "i-0eedbf0068fcfe7b9"
   port             = "8080"
 }
