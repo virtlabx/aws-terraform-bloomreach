@@ -11,6 +11,7 @@ resource "aws_instance" "server" {
   user_data                   = templatefile("${path.module}/cloud-init-generic.config.tpl", {
     hostname            = var.instance_hostname == "" ? format(var.instance_name_format, count.index + 1) : var.instance_hostname,
     jenkins_install     = var.jenkins_install,
+    vault_install       = var.vault_install,
     docker_install      = var.docker_install,
     cloudwatch_install  = var.cloudwatch_install,
     ssh_user            = var.ssh_user,

@@ -58,6 +58,12 @@ variable "jenkins_install" {
   default     = true
 }
 
+variable "vault_install" {
+  description = "Vault install"
+  type        = bool
+  default     = true
+}
+
 variable "cloudwatch_install" {
   description = "cloudwatch agent install"
   type        = bool

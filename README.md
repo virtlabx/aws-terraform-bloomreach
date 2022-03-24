@@ -13,7 +13,7 @@ Generic EC2 module to provision EC2 instances and its volume.
 
 It uses cloud-init to optionally install some packages during the ec2 instance provisioning.
 
-Packages are Docker, Jenkins, git and cloudwatch agent.
+Packages are Docker, Jenkins, vault, git and cloudwatch agent.
 
 ### ECR Repository
 To create ECR repos with a lifecycle to remove the untagged docker images that are older than 14 days.
@@ -47,11 +47,17 @@ I used Ireland region to provision all the resources.
 - KMS key to encrypt EKS cluster config.
 - EKS cluster with an encrypted config(Security best practise).
 - Imported AWS ssh public Key pair.
-- Security group for jenkins EC2 instance with the required ports only opened.
-- EC2 instance that runs jenkins and uses an EIP.
+- Security group for jenkins and vault EC2 instance with the required ports only opened.
+- EC2 instance that runs jenkins and vault. It uses an EIP.
 - IAM account password policy that is better for security.
 - IAM role for cloudwatch agent that is installed in the ec2 instance and IAM instance profile.
 - ECR repository for pushing the docker images after it's built on jenkins.
+- Acm certificate for jenkins and vault server.
+- Load balancer that has jenkins instance behind it.
+
+I also added resources in route53 service but that was manually.
+
+The reason why I added these manually as terraform is unable to manage the domain registration.
 
 ### Run terraform:
 There are 2 ways to do that.

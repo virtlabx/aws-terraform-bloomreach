@@ -44,6 +44,16 @@ write_files:
         yum -y install git
 %{ endif }
 
+%{ if vault_install == true }
+ - path: /var/lib/cloud/instance/scripts/vault_install.sh
+   permissions: '0755'
+   content: |
+        #!/bin/bash -ex
+        yum install -y yum-utils
+        yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+        yum -y install vault
+%{ endif }
+
 %{ if cloudwatch_install == true }
  - path: /var/lib/cloud/instance/scripts/cloudwatch_install.sh
    permissions: '0755'
