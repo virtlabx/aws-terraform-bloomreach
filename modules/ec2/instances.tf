@@ -33,3 +33,8 @@ resource "aws_eip" "eip" {
   instance = aws_instance.server.*[count.index].id
   tags     = var.tags
 }
+
+output "instance_id" {
+  value       = aws_instance.server.*.id
+  description = "The EC2 instance ID."
+}

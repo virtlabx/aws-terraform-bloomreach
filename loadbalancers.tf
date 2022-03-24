@@ -52,6 +52,6 @@ resource "aws_lb_target_group" "lb-jenkins-vault-tg" {
 
 resource "aws_lb_target_group_attachment" "lb-jenkins-vault-tg-attachment" {
   target_group_arn = aws_lb_target_group.lb-jenkins-vault-tg.arn
-  target_id        = "i-0eedbf0068fcfe7b9"
+  target_id        = flatten(module.jenkins-dev-master.instance_id)[0]
   port             = "8080"
 }
