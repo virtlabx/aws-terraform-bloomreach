@@ -24,6 +24,13 @@ resource "aws_security_group" "bloomreach-jenkins-dev-sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
   }
+  ingress {
+    description = "Allow HTTPS access to the application load balancer the has jenkins EC2 instance behind."
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
+  }
   egress {
     description = "Allow SMTP to send email in case of a build failures."
     from_port   = 25
