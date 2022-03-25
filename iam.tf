@@ -49,7 +49,7 @@ resource "aws_iam_instance_profile" "cloudwatch-agent-instance-profile" {
 }
 
 resource "aws_iam_policy" "external_dns_policy" {
-  name        = "eb-cloudwatch-policy"
+  name        = "external-dns-policy"
   path        = "/GC/"
   description = "Grant the ExternalDNS pod permissions to create, update and delete Route 53 records"
 
