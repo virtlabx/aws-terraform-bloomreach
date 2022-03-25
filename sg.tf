@@ -18,14 +18,14 @@ resource "aws_security_group" "bloomreach-jenkins-dev-sg" {
     cidr_blocks = ["178.84.204.183/32"] # This is my IP
   }
   ingress {
-    description = "Allow access to vault UI."
+    description = "Allow vault ports."
     from_port   = 8200
-    to_port     = 8200
+    to_port     = 8201
     protocol    = "tcp"
-    cidr_blocks = ["172.21.0.0/16"] # The VPC CIDR block
+    cidr_blocks = ["172.21.0.0/16"]
   }
   ingress {
-    description = "Allow HTTPS access to the application load balancer the has jenkins EC2 instance behind."
+    description = "Allow HTTPS access to the application load balancer that has jenkins EC2 instance behind."
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
