@@ -8,21 +8,21 @@ resource "aws_security_group" "bloomreach-jenkins-dev-sg" {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
+    cidr_blocks = ["172.21.0.0/16"] # The VPC CIDR block
   }
   ingress {
     description = "Allow ssh access from my IP address."
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["178.84.204.183/32"]
+    cidr_blocks = ["178.84.204.183/32"] # This is my IP
   }
   ingress {
     description = "Allow access to vault UI."
     from_port   = 8200
     to_port     = 8200
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
+    cidr_blocks = ["172.21.0.0/16"] # The VPC CIDR block
   }
   ingress {
     description = "Allow HTTPS access to the application load balancer the has jenkins EC2 instance behind."
@@ -56,6 +56,13 @@ resource "aws_security_group" "bloomreach-jenkins-dev-sg" {
     description = "Allow the default jenkins port to receive health check response on that port."
     from_port   = 8080
     to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
+  }
+  egress {
+    description = "Allow access to vault UI."
+    from_port   = 8200
+    to_port     = 8200
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
   }

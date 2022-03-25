@@ -53,7 +53,7 @@ I used Ireland region to provision all the resources.
 - IAM role for cloudwatch agent that is installed in the ec2 instance and IAM instance profile.
 - ECR repository for pushing the docker images after it's built on jenkins.
 - Acm certificate for jenkins and vault server.
-- Load balancer that has jenkins instance behind it.
+- Application Load balancer that has jenkins/vault instance behind it.
 
 I also added resources in route53 service but that was manually.
 
