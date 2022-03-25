@@ -57,7 +57,7 @@ resource "aws_lb_listener" "https_vault" {
 
 resource "aws_lb_target_group" "lb-vault-tg" {
   name     = "lb-vault-tg"
-  port     = "8080"
+  port     = "8200"
   protocol = "HTTP"
   vpc_id   = module.eks-vpc.vpc_id
   tags     = merge({ Name = "lb-vault-tg" }, local.dev-tags)
