@@ -37,7 +37,7 @@ resource "aws_lb_target_group" "lb-jenkins-tg" {
   }
 }
 
-resource "aws_lb_target_group_attachment" "lb-jenkins-vault-tg-attachment" {
+resource "aws_lb_target_group_attachment" "lb-jenkins-tg-attachment" {
   target_group_arn = aws_lb_target_group.lb-jenkins-tg.arn
   target_id        = flatten(module.jenkins-dev-master.instance_id)[0]
   port             = "8080"
@@ -73,7 +73,7 @@ resource "aws_lb_target_group" "lb-vault-tg" {
   }
 }
 
-resource "aws_lb_target_group_attachment" "lb-jenkins-vault-tg-attachment" {
+resource "aws_lb_target_group_attachment" "lb-vault-tg-attachment" {
   target_group_arn = aws_lb_target_group.lb-vault-tg.arn
   target_id        = flatten(module.jenkins-dev-master.instance_id)[0]
   port             = "8200"
