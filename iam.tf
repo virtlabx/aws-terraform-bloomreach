@@ -47,36 +47,3 @@ resource "aws_iam_instance_profile" "cloudwatch-agent-instance-profile" {
   name = "cloudwatch-agent-instance-profile"
   role = aws_iam_role.cloudwatch-agent-role.name
 }
-
-resource "aws_iam_policy" "external_dns_policy" {
-  name        = "external-dns-policy"
-  path        = "/GC/"
-  description = "Grant the ExternalDNS pod permissions to create, update and delete Route 53 records"
-
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "route53:ChangeResourceRecordSets"
-      ],
-      "Resource": [
-        "arn:aws:route53:::hostedzone/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "route53:ListHostedZones",
-        "route53:ListResourceRecordSets"
-      ],
-      "Resource": [
-        "*"
-      ]
-    }
-  ]
-}
-EOF
-}
