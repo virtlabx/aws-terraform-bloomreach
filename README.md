@@ -58,6 +58,7 @@ I used Ireland region to provision all the resources.
 I also added resources in route53 service but that was manually.
 
 The reason why I added these manually as terraform is unable to manage the domain registration.
+And I also managed the route53 hosted zones DNS records manually as well.
 
 ### Run terraform:
 There are 2 ways to do that.
