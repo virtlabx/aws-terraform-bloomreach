@@ -22,7 +22,7 @@ resource "aws_security_group" "bloomreach-jenkins-dev-sg" {
     from_port   = 8200
     to_port     = 8201
     protocol    = "tcp"
-    cidr_blocks = ["172.21.0.0/16"]
+    cidr_blocks = ["0.0.0.0/0"] # This should be limited to a specific subnet/ip.
   }
   ingress {
     description = "Allow HTTPS access to the application load balancer that has jenkins EC2 instance behind."
