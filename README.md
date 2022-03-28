@@ -63,7 +63,7 @@ And I also managed the route53 hosted zones DNS records manually as well.
 ### Run terraform:
 There are 2 ways to do that.
 
-1- Manually.
+1- Manually which is the used way.
 
 ```
     git clone https://github.com/virtlabx/terraform-bloomreach.git
@@ -85,3 +85,21 @@ To check that, have a look on .github/workflows/terraform.yml file and also on A
 Here is the theory behind that:
 
 [https://learn.hashicorp.com/tutorials/terraform/github-actions](https://learn.hashicorp.com/tutorials/terraform/github-actions)
+
+But that way needs a modification in the main.tf file to modify terraform backend.
+
+It will be using my terraform cloud account to automate terraform init, plan and apply.
+
+The modification in main.tf is to remove the s3 bucket as the backend and replace it with the following terraform cloud snippet:
+
+```
+terraform {
+  cloud {
+    organization = "Bloomreach"
+
+    workspaces {
+      name = "terraform-bloomreach"
+    }
+  }
+}
+```
