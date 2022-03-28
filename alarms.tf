@@ -4,15 +4,15 @@ module "sns_topic" {
   tags           = merge({ Name = "bloomreach-dev-interviews-terraform-ayaelawdan-sns" }, local.dev-tags)
 }
 
-resource "aws_cloudwatch_log_group" "cloudtrail_events" {
-  name              = "bloomreach-dev-interviews-terraform-ayaelawdan-cloudtrail-events"
+resource "aws_cloudwatch_log_group" "log_group_events" {
+  name              = "bloomreach-dev-interviews-terraform-ayaelawdan-log-group-events"
   retention_in_days = "545"
 }
 
 resource "aws_cloudwatch_log_metric_filter" "no_mfa_console_signin" {
   name           = "NoMFAConsoleSignin"
   pattern        = "{ ($.eventName = \"ConsoleLogin\") && ($.additionalEventData.MFAUsed != \"Yes\") }"
-  log_group_name = aws_cloudwatch_log_group.cloudtrail_events.name
+  log_group_name = aws_cloudwatch_log_group.log_group_events.name
   metric_transformation {
     name      = "NoMFAConsoleSignin"
     namespace = var.alarm_namespace
